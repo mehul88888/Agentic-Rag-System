@@ -1,0 +1,45 @@
+{
+  "name": "agentic-rag-system",
+  "version": "1.0.0",
+  "description": "Terminal-based POC demonstrating an agentic system that intelligently delegates user requests across multiple tools and data sources using LangGraph and Weaviate",
+  "main": "src/cli.js",
+  "scripts": {
+    "start": "node src/cli.js",
+    "setup": "node src/setup/init-schema.js && node src/setup/seed-data.js",
+    "init-schema": "node src/setup/init-schema.js",
+    "seed-data": "node src/setup/seed-data.js",
+    "reset": "docker-compose down -v && docker-compose up -d",
+    "dev": "node --watch src/cli.js",
+    "test": "node --test tests/*.test.js",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "health-check": "node src/utils/health-check.js",
+    "test-llm": "node -e \"require('./src/services/llm').test()\""
+  },
+  "keywords": [
+    "rag",
+    "agentic",
+    "langgraph",
+    "weaviate",
+    "vector-database",
+    "llm",
+    "gemini"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@langchain/core": "^0.3.0",
+    "@langchain/google-genai": "^0.1.0",
+    "@langchain/langgraph": "^0.2.0",
+    "weaviate-client": "^3.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
